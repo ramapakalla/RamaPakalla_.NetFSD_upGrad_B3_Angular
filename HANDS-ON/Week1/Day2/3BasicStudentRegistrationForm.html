@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Student Registration Form</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+
+<body>
+    <header>
+        <h1>Student Registration Form</h1>
+    </header>
+    <form method="GET" autocomplete="off">
+        <fieldset>
+            <legend> Student Registration</legend>
+            <label>Student Name: </label>
+            <input type="text" name="name" id="name" required placeholder="Enter your name" />
+            <br /><br />
+            <label>Email: </label>
+            <input type="email" name="email" id="email" placeholder="Enter your email" />
+            <br /><br />
+            <label>Mobile number: </label>
+            <input type="tel" name="phone" id="phone" pattern="\d{10}" placeholder="Enter your mobile number" />
+            <br /><br />
+            <label>Age: </label>
+            <input type="number" min="10" max="50" step="1" name="age" id="age" placeholder="Enter your age" />
+            <br /><br />
+            <label>DOB: </label>
+            <input type="date" name="date" id="date" placeholder="Enter your dob" />
+            <br /><br />
+            <input type="submit" value="Register" />
+
+        </fieldset>
+
+    </form>
+
+</body>
+
+</html>

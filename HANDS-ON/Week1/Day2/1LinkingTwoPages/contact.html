@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Page</title>
+  </head>
+  <body>
+    <h1>Contact Us</h1>
+    <p>This is the contact page of our website.</p>
+    <a href="home.html">Go to Home Page</a>
+    <form method="post">
+      <label>Name:</label>
+      <input type="text" name="name" required placeholder="Enter your name" />
+      <br /><br />
+      <label>Email:</label>
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="Enter your email"
+      />
+      <br /><br />
+      <label>Password:</label>
+      <input
+        type="password"
+        name="password"
+        required
+        placeholder="Enter your password"
+      />
+      <br /><br />
+      <label>Gender:</label>
+      <input type="radio" name="gender" value="male" required />
+      <label> Male</label>
+      <input type="radio" name="gender" value="female" required />
+      <label>Female</label>
+      <br /><br />
+      <label>Courses:</label>
+      <select name="courses" required>
+        <option>B.Tech</option>
+        <option>M.Tech</option>
+        <option>BBA</option>
+        <option>MBA</option>
+      </select>
+      <br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

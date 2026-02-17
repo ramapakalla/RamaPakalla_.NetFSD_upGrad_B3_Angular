@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Course Enrollment Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <header>
+        <h1>Course Enrollment Form</h1>
+    </header>
+    <form method="get" autocomplete="off">
+        <label>Course Name:</label>
+        <input type="text" id="course" name="course" list="course-list" required placeholder="Select or type a course">
+        <datalist id="course-list">
+            <option value="HTML">
+            <option value="CSS">
+            <option value="JavaScript">
+            <option value="Python">
+            <option value="Java">
+        </datalist>
+        <br><br>
+        <label>Email:</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email">
+        <br><br>
+        <label>Self-Rated Skill Level (0–100)</label>
+        <input type="range" id="skill" name="skill" min="0" max="100" value="50">
+        <h3>Enrollment Progress</h3>
+        <progress value="70" max="100"></progress>
+        <br><br>
+        <h3>Skill Level Indicator</h3>
+        <meter value="30" min="0" max="100" low="30" high="70" optimum="90">60 out of 100
+        </meter>
+        <br><br>
+        <input type="submit" value="Enroll Now">
+    </form>
+
+</body>
+
+</html>
