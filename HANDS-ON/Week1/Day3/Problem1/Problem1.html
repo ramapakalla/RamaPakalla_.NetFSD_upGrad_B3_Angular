@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>External CSS Example</title>
+    <link rel="stylesheet" href="problem1.css">
+</head>
+<body>
+    <header>    
+    <h1>Welcome to External CSS Demo</h1>
+    <p>This is a simple example of how to link an external CSS file to an HTML document.</p>
+    </header>
+    <main>
+    <section>
+        <h2>About External CSS</h2>
+        <p>External CSS allows you to separate your style rules from your HTML structure, making it easier to maintain and update your website's design. By linking an external CSS file, you can apply the same styles across multiple pages, ensuring consistency and saving time.</p>
+    </section>
+    <section>
+        <h2>Benefits of Using External CSS</h2>
+        <p>Using external CSS files provides several advantages:</p>
+        <ul>
+            <li><strong>Reusability:</strong> You can use the same CSS file across multiple HTML documents, which promotes consistency and reduces redundancy.</li>
+            <li><strong>Maintainability:</strong> It is easier to update styles in one CSS file rather than modifying inline styles in multiple HTML files.</li>
+            <li><strong>Improved Performance:</strong> Browsers can cache external CSS files, which can lead to faster load times for subsequent visits.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>How to Link an External CSS File</h2>
+        <p>To link an external CSS file, you need to use the <code>&lt;link&gt;</code> element within the <code>&lt;head&gt;</code> section of your HTML document. The <code>href</code> attribute specifies the path to your CSS file, and the <code>rel</code> attribute should be set to "stylesheet". Here is an example:</p>
+        <pre><code>&lt;link rel="stylesheet" href="styles.css"&gt;</code></pre>
+        </section>
+        <div>
+        <p>In this example, the HTML document is linked to an external CSS file named "problem1.css". You can create this CSS file and add your styles to see how it affects the appearance of the HTML elements on the page.</p>
+        </div>
+    </main>
+</body>
+</html>

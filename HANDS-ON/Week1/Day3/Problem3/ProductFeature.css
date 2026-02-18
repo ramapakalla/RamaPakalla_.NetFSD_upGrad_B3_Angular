@@ -1,0 +1,36 @@
+h1{
+    color: darkblue;
+    font-size: 36px;
+    text-align: center;
+}
+p{
+    color: black;
+    font-size: 18px;
+    text-align: center;
+}
+section{
+    padding: 20px;
+    margin: 15px;
+}
+ul li{
+    font-family: 'Roboto';
+    background-color: darkcyan;
+    color: white;
+    border: 2px solid goldenrod;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+   
+}
+li:hover{
+    background-color: lightcyan;
+    color: rgb(89, 146, 89);
+
+}
+
+.contact{
+    background-color: lightgray;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
