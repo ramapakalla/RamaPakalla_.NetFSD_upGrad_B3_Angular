@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Analysis Tool</title>
+</head>
+<body>
+    <h1>Number Analysis Tool</h1>
+
+    <label>Number: </label>
+    <input type="number" id="numberInput" placeholder="Enter a number"/>
+    <button onclick="analyzeNumber()">Analyze</button>
+
+    <p id="result"></p>
+
+    <script>
+        function analyzeNumber() {
+
+            let number = Number(document.getElementById("numberInput").value);
+            let output = document.getElementById("result");
+            output.innerHTML = "";
+
+            if (isNaN(number)) {
+                output.innerHTML = "Please enter a valid number.";
+                return;
+            }
+
+            // Ternary Operator
+            output.innerHTML += "Conditional Operator (Ternary)<br>";
+            let result = (number < 0) ? "Negative" : 
+                         (number > 0) ? "Positive" : "Zero";
+
+            output.innerHTML += "Number is: " + result + "<br>";
+
+            // If–Else (Even or Odd)
+            if (number % 2 === 0) {
+                output.innerHTML += "Number is Even<br>";
+            } else {
+                output.innerHTML += "Number is Odd<br>";
+            }
+
+            // Loop
+            output.innerHTML += "<br>Loop Statement<br>";
+
+            if (number > 0) {
+                for (let i = 1; i <= number; i++) {
+                    output.innerHTML += i + " ";
+                }
+            } else {
+                output.innerHTML += "Range printing only works for positive numbers.";
+            }
+        }
+    </script>
+</body>
+</html>

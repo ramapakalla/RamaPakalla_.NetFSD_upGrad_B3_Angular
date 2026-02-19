@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Evaluator</title>
+</head>
+<body>
+    <h1>Student Grade Evaluator</h1>
+    <label for="marks">Student Marks:</label>
+    <input type="number" id="marks" placeholder="Enter student marks">
+    <p id="result"></p>
+    <button onclick="evaluateMarks()">Evaluate</button>
+    <script>
+        function evaluateMarks(){
+        let studentMarks = Number(document.getElementById("marks").value);
+        let result = document.getElementById("result");
+        
+        if(isNaN(studentMarks) || studentMarks < 0 || studentMarks > 100){
+            result.innerText = "Please enter a valid number between 0 and 100.";
+            result.style.color = "red";
+            
+        }
+        else if(studentMarks >= 75){
+            result.innerText = "Grade A";
+            result.style.color = "green";
+        }
+        else if(studentMarks >= 60){
+            result.innerText = "Grade B";
+            result.style.color = "blue";
+        }
+        else if(studentMarks >= 40){
+            result.innerText = "Grade C";
+            result.style.color = "orange";
+        }
+        else {
+            result.innerText = "Fail";
+            result.style.color = "red";
+        }
+    }
+    </script>
+    
+</body>
+</html>

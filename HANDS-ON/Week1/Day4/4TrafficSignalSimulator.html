@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Signal Simulator</title>
+</head>
+<body>
+    <h1>Traffic Signal Simulator</h1>
+    <label>Signal Color: </label>
+    <input type="text" id="signalColor" placeholder="Enter signal color (red/yellow/green)" />
+    <button onclick="trafficSignal()"> Alert</button>
+    <p id="msg"></p>
+    <script>
+        function trafficSignal(){
+        let signalColor = document.getElementById("signalColor").value;
+        let trafficMsg = document.getElementById("msg");
+        
+        switch(signalColor) {
+            case("red"):{
+                trafficMsg.innerText = "Stop!";
+                trafficMsg.style.color = "red";
+                break;
+            }
+            case("yellow"): {
+              trafficMsg.innerText = "Get Ready!";
+                trafficMsg.style.color = "yellow";
+                break;
+            }
+            case("green"): {
+                trafficMsg.innerText = "Go!";
+                trafficMsg.style.color = "green";
+                break;
+            }
+            default:{
+               trafficMsg.innerText = "Invalid Signal Color!";
+               trafficMsg.style.color = "red";
+            }
+        }
+    }
+            
+    </script>
+
+</body>
+</html>
