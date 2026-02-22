@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter App</title>
+  </head>
+  <body>
+    <h1>Counter App</h1>
+    <input
+      type="button"
+      id="increment"
+      value="Increment"
+      name="increment"
+      onclick="incrementCounter(1)"
+    />
+    <input
+      type="button"
+      id="reset"
+      value="Reset"
+      name="reset"
+      onclick="resetCounter()"
+    />
+    <p id="count"></p>
+    <script>
+      let counter = 0;
+      let countElement = document.getElementById("count");
+      function incrementCounter(step) {
+        counter += step;
+        updateUI();
+      }
+      function resetCounter() {
+        counter = 0;
+       updateUI();
+      }
+      function updateUI() {
+        countElement.textContent = counter;
+        countElement.style.color = counter === 0 ? "black" : "blue";
+      }
+    </script>
+  </body>
+</html>
