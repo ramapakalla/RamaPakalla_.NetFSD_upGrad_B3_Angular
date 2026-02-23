@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Location Based Weather Logger</title>
+  </head>
+  <body>
+    <h1>Location Based Weather Logger</h1>
+
+    <button onclick="getLocation()">Get My Location</button>
+
+    <p id="location"></p>
+
+    <h3>Last 5 Locations</h3>
+    <ul id="history"></ul>
+
+    <script>
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition, showError, {
+            timeout: 10000,
+          });
+        } else {
+          document.getElementById("location").innerHTML =
+            "Geolocation is not supported by this browser.";
+        }
+      }
+
+      function showPosition(position) {
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+
+        document.getElementById("location").innerHTML =
+          "Latitude: " + lat + "<br>Longitude: " + lon;
+
+        var newEntry = {
+          latitude: lat,
+          longitude: lon,
+          timestamp: new Date().toLocaleString(),
+        };
+
+        var history = JSON.parse(localStorage.getItem("locationHistory")) || [];
+
+        history.push(newEntry);
+
+        // Keep only last 5 entries
+        if (history.length > 5) {
+          history = history.slice(-5);
+        }
+
+        localStorage.setItem("locationHistory", JSON.stringify(history));
+
+        displayHistory();
+      }
+
+      function showError(error) {
+        var message = "";
+
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            message = "Permission denied.";
+            break;
+          case error.POSITION_UNAVAILABLE:
+            message = "Location unavailable.";
+            break;
+          case error.TIMEOUT:
+            message = "Request timed out.";
+            break;
+          default:
+            message = "An unknown error occurred.";
+        }
+
+        document.getElementById("location").innerHTML = message;
+      }
+
+      function displayHistory() {
+        var history = JSON.parse(localStorage.getItem("locationHistory")) || [];
+
+        var historyList = document.getElementById("history");
+        historyList.innerHTML = "";
+
+        if (history.length === 0) {
+          historyList.innerHTML = "<li>No saved locations</li>";
+          return;
+        }
+
+        history.forEach(function (item) {
+          var li = document.createElement("li");
+          li.innerHTML =
+            item.timestamp + " → " + item.latitude + ", " + item.longitude;
+
+          historyList.appendChild(li);
+        });
+      }
+
+      // Show saved history when page loads
+      window.onload = displayHistory;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Form Validation</title>
+  </head>
+  <body>
+    <h1>Live Form Validation</h1>
+    <hr />
+    <form>
+      <label for="name">Name: </label>
+      <input type="text" name="name" id="name" placeholder="Enter your name" onchange="validateName()" />
+      <span id="nameMsg"></span>
+      <br /><br />
+
+      <label for="email">Email: </label>
+      <input type="email" name="email" id="email" placeholder="Enter your email" onchange="validateEmail()" />
+      <span id="emailMsg"></span>
+      <br /><br />
+
+      <label for="age">Age: </label>
+      <input type="number" name="age" id="age" placeholder="Enter your age" min="18" onchange="validateAge()" />
+      <span id="ageMsg"></span>
+      <br /><br />
+
+      <button type="button" onclick="registerUser()">Register</button>
+      <p id="finalMsg"></p>
+    </form>
+    <script>
+      
+      function validateName() {
+        var name = document.getElementById("name").value;
+        var msg = document.getElementById("nameMsg");
+
+        if (name.trim() === "") {
+          msg.innerHTML = "Name cannot be empty";
+          msg.style.color="red";
+          return false;
+          
+        } 
+        else {
+          msg.innerHTML = "Valid";
+          msg.style.color="green";
+          return true;
+          
+        }
+      }
+
+      function validateEmail() {
+        var email = document.getElementById("email").value;
+        var msg = document.getElementById("emailMsg");
+
+        if (email.includes("@")) {
+          msg.innerHTML = "Valid";
+          msg.style.color="green";
+          return true;
+        } 
+        else {
+          msg.innerHTML = "Email must contain @";
+          msg.style.color="red";
+          return false;
+        }
+      }
+
+      function validateAge() {
+        var age = document.getElementById("age").value;
+        var msg = document.getElementById("ageMsg");
+
+        if(age>18){
+            msg.innerHTML = "Valid";
+            msg.style.color="green";
+            return true;
+        }
+        else{
+            msg.innerHTML = "Age must be greater than 18";
+            msg.style.color="red";
+            return false;
+        }
+
+      }
+
+      function registerUser() {
+        if (validateName() && validateEmail() && validateAge()) {
+            sessionStorage.setItem("name",document.getElementById("name").value);
+            sessionStorage.setItem("email",document.getElementById("email").value);
+            sessionStorage.setItem("age",document.getElementById("age").value);
+            document.getElementById("finalMsg").innerHTML = "Registration successful!";
+            document.getElementById("finalMsg").style.color="green";
+        }
+        else{
+            document.getElementById("finalMsg").innerHTML = "Please correct the errors before registering.";
+            document.getElementById("finalMsg").style.color="red";
+        }
+    }
+    </script>
+  </body>
+</html>
