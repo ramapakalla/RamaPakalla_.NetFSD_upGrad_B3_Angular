@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Collection</title>
+    <style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 6px;
+    }
+</style>
+</head>
+<body>
+    <h1>Employee Collection</h1>
+    <label for="employeeSelect">Select an Employee:</label>
+    <select id="employeeSelect">
+        <option value="">All Employees</option>
+        <option value="Manager">Manager</option>
+        <option value="Salesman">Salesman</option>
+        <option value="Clerk">Clerk</option>
+        <option value="Intern">Intern</option>
+        <option value="CEO">CEO</option>
+    </select>
+    <button onclick="showEmployeeInfo()">Show Emps </button>
+    <br><br>
+    <table id="employeeTable"></table>
+    <script>
+        function showEmployeeInfo() {
+
+            const employees = [
+                { name: "Alice", job: "Manager", department: "HR" },
+                { name: "Bob", job: "Salesman", department: "Sales" },
+                { name: "Charlie", job: "Clerk", department: "Admin" },
+                { name: "David", job: "Intern", department: "IT" },
+                { name: "Eve", job: "CEO", department: "Executive" },
+                { name: "Frank", job: "Manager", department: "Finance" },
+                { name: "Grace", job: "Salesman", department: "Marketing" },
+                { name: "Heidi", job: "Manager", department: "Operations" },
+                { name: "Ivan", job: "Clerk", department: "Customer Service" },
+                { name: "Judy", job: "Intern", department: "Research" }
+            ];
+
+            const select = document.getElementById("employeeSelect");
+            const selectedJob = select.value;
+            let filteredEmployees = [];
+            if(selectedJob === ""){
+                filteredEmployees = employees;
+            }
+            else{
+             filteredEmployees =  employees.filter(employee => employee.job === selectedJob);
+            }
+            const table = document.getElementById("employeeTable");
+            table.innerHTML = "<tr border='2'><th>Name</th><th>Job</th><th>Department</th></tr>";
+            
+           
+            for(let item of filteredEmployees){
+                const row = `<tr>
+                    <td>${item.name}</td>
+                    <td>${item.job}</td>
+                    <td>${item.department}</td>
+                </tr>`;
+                table.innerHTML += row;
+               
+            }
+        }
+    </script>
+</body>
+
+</html>

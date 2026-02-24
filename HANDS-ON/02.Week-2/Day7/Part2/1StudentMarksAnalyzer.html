@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks Analyzer</title>
+</head>
+<body>
+    <h1>Student Marks Analyzer</h1>
+    <p id="result"></p>
+
+    <script>
+        const studentMarks = [90,76,81,56,45,98,65];
+        // Calculate total using reduce method
+        const totalMarks = studentMarks.reduce((acc,mark) => acc + mark,0);
+        // Calculate average
+        const averageMarks = totalMarks / studentMarks.length;
+        
+        const result = document.getElementById("result");
+        
+        const passMarks = 50;
+        const status = averageMarks >= passMarks ? "Pass" : "Fail";
+
+        result.innerHTML = `
+            Total Marks: ${totalMarks} <br>
+            Average Marks: ${averageMarks.toFixed(2)} <br>
+           Result: <em>${status}</em>
+        `;
+
+    </script>
+    
+</body>
+</html>
