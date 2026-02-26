@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager with Async Storage </title>
+</head>
+<body>
+    <h2>Task Manager with Async Storage </h2>
+
+    <input type="text" id="taskInput" placeholder="Enter a task" />
+    <button id="addTask">Add Task</button>
+    <ul id="taskList"></ul>
+
+   <script>
+    let tasks = [];
+
+    const inputObj = document.getElementById("taskInput");
+    const addTaskObj = document.getElementById("addTask");
+    const taskListObj = document.getElementById("taskList");
+
+    const showTasks = () => {
+        taskListObj.innerHTML = "";
+        tasks.forEach((task, index) => {
+            const li = document.createElement("li");
+            li.textContent = `${task} `;
+
+            const delTask = document.createElement("button");
+            delTask.textContent = "Delete";
+
+            delTask.addEventListener("click", async () => {
+                await deleteTaskAsync(index);  
+                showTasks();
+            });
+
+            li.appendChild(delTask);
+            taskListObj.appendChild(li);
+        });
+    };
+
+    
+    const addTaskCallback = (task, callback) => {
+        setTimeout(() => {
+            tasks.push(task);
+            callback();
+        }, 500);
+    };
+
+    const deleteTaskCallback = (index, callback) => {
+        setTimeout(() => {
+            tasks.splice(index, 1);
+            callback();
+        }, 500);
+    };
+
+
+    const addTaskPromise = (task) => {
+        return new Promise((resolve) => {
+            addTaskCallback(task, () => {
+                resolve();
+            });
+        });
+    };
+
+    const deleteTaskPromise = (index) => {
+        return new Promise((resolve) => {
+            deleteTaskCallback(index, () => {
+                resolve();
+            });
+        });
+    };
+
+    const addTaskAsync = async (task) => {
+        await addTaskPromise(task);
+    };
+
+    const deleteTaskAsync = async (index) => {
+        await deleteTaskPromise(index);
+    };
+
+ -
+    addTaskObj.addEventListener("click", async () => {
+
+        const task = inputObj.value.trim();
+        if (!task) return alert("Enter a task!");
+
+        await addTaskAsync(task);  
+        inputObj.value = "";
+        showTasks();
+    });
+
+</script>
+</body>
+</html>

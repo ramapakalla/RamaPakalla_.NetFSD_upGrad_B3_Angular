@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Feedback</title>
+  </head>
+  <body>
+    <h2>Give your valuable feedback</h2>
+    <input
+      type="text"
+      id="feedbackInput"
+      placeholder="Write your feedback here"/>
+    <br/>
+    <br/>
+    <button type="button" id="feedbackBtn">Submit Feedback</button>
+    <br/> 
+    <p id="confirmationMessage"></p>
+
+    <script>
+      const feedbackBtn = document.getElementById("feedbackBtn");
+      const feedbackInput = document.getElementById("feedbackInput");
+      const confirmationMessage = document.getElementById("confirmationMessage");
+      feedbackBtn.addEventListener('click', () => {
+      const userFeedback = feedbackInput.value.trim();
+
+    if (userFeedback === "") {
+        confirmationMessage.textContent = "We want to hear something from you!";
+        confirmationMessage.style.color = "red";
+    } else {
+        confirmationMessage.textContent = `Thank you for your feedback: "${userFeedback}" `;
+        confirmationMessage.style.color = "green";
+        feedbackInput.value = "";
+    }
+
+    setTimeout(() => {
+        confirmationMessage.textContent = "";
+    }, 3000);
+});
+    </script>
+  </body>
+</html>
