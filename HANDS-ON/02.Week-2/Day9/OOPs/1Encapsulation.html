@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Details</title>
+  </head>
+  <body>
+    <h1>Student Details</h1>
+    <hr />
+    <p id="studentDetails"></p>
+    <script>
+      class Student{
+          constructor( name,rollNumber, marks){
+              this.name = name;
+              this.rollNumber = rollNumber;
+              this.marks = marks;
+          }
+          getDetails(){
+            return `Student Name:  ${this.name}  <br/> 
+                   Roll Number:   ${this.rollNumber} <br/>
+                   Marks:  ${this.marks}  <br/>
+                   Grade:   ${this.getGrade()}`;
+
+          }
+          getGrade(){
+              if(this.marks < 0 || this.marks >100){
+                  return "Invalid Marks";
+              }
+              else if(this.marks>=90){
+                  return "A";
+              }
+              else if(this.marks >=75 && this.marks <= 89){
+                   return "B";
+              }
+              else if(this.marks >=50 && this.marks <= 74){
+                   return "C";
+              }
+              else{
+                  return "Fail";
+
+              }
+          }
+      }
+      let studentDetailsObj = document.getElementById("studentDetails");
+      let s1 = new Student("Rama",2075, 97);
+      let s2 = new Student("Swathi",1097, 76);
+      console.log(s1.getDetails());
+      console.log(s2.getDetails());
+      studentDetailsObj.innerHTML = s1.getDetails() + "<hr/>" + s2.getDetails();
+    </script>
+  </body>
+</html>
