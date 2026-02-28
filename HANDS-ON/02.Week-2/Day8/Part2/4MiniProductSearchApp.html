@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Product Search App</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 30px;
+    }
+
+    input {
+      padding: 8px;
+      width: 200px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      list-style: none;
+      padding: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <h1>Mini Product Search App</h1>
+    <input type="text" id="searchProd" placeholder="Search product" />
+    <ul id="productsList"></ul>
+  </div>
+
+  <script>
+    const products = [
+      "iPhone 14",
+      "Samsung Galaxy S23",
+      "MacBook Pro",
+      "Dell XPS 13",
+      "Sony Headphones",
+      "Apple Watch",
+      "iPad Air",
+      "HP Spectre",
+      "Google Pixel",
+      "OnePlus 11",
+      "HD Webcam",
+      "Noise Cancelling Earbuds",
+      "Tablet Cover",
+      "Fitness Band",
+      "Digital Alarm Clock",
+      "Coffee Mug",
+      "Wireless Speaker",
+    ];
+
+    // state
+    let filteredProducts = [...products];
+
+    let app = document.getElementById("app");
+    let prodList = document.getElementById("productsList");
+
+    function showProducts(list) {
+      prodList.innerHTML = "";
+
+      if (list.length === 0) {
+        prodList.innerHTML = "<li>No Results Found</li>";
+        return;
+      }
+
+      list.forEach(product => {
+        let li = document.createElement("li");
+        li.textContent = product;
+        prodList.appendChild(li);
+      });
+    }
+
+    function filterProducts(value) {
+      filteredProducts = products.filter(product =>
+        product.toLowerCase().includes(value.toLowerCase())
+      );
+    }
+
+    // event delegation
+    app.addEventListener("input", function (e) {
+      if (e.target.id === "searchProd") {
+        let value = e.target.value.trim();
+        filterProducts(value);
+        showProducts(filteredProducts);
+      }
+    });
+
+    showProducts(filteredProducts);
+  </script>
+
+</body>
+</html>
