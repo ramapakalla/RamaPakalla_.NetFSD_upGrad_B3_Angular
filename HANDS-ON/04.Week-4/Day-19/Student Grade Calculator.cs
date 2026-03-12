@@ -4,10 +4,10 @@
     {
         public double CalculateAverage(int m1, int m2,int m3)
         {
-            return (m1+m2+m3)/3;
+            return (m1+m2+m3)/3.0;
         }
 
-        public void DisplayGrade(double avg)
+        public void DisplayGrade(double average)
         {
             char grade;
 
@@ -22,7 +22,7 @@
             else
                 grade = 'F';
 
-            Console.WriteLine("Average = " + avg + ", Grade = " + grade);
+            Console.WriteLine("Average = " + average + ", Grade = " + grade);
         }
 
     }
@@ -32,7 +32,7 @@
         {
 
             string input = Console.ReadLine();
-            string[] marks = input.split(' ');
+            string[] marks = input.Split(' ');
 
             int m1 = int.Parse(marks[0]);
             int m2 = int.Parse(marks[1]);
@@ -47,3 +47,4 @@
         }
     }
 }
+
