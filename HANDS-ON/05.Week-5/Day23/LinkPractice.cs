@@ -1,16 +1,13 @@
-﻿
-using System.Collections;
+using System;
+using System.Collections.Generic;
 
 namespace LinqPractice
 {
     internal class Product
     {
         public int ProCode { get; set; }
-
         public string ProName { get; set; }
-
         public string ProCategory { get; set; }
-
         public double ProMrp { get; set; }
 
         public List<Product> GetProducts()
@@ -31,7 +28,6 @@ namespace LinqPractice
                  new Product{ProCode=1019,ProName="Bru",ProCategory="FMCG",ProMrp=90},
                  new Product{ProCode=1015,ProName="Parachut",ProCategory="Edible-Oil",ProMrp=60}
             };
-
         }
     }
 
@@ -43,7 +39,10 @@ namespace LinqPractice
             var products = product.GetProducts();
 
             //1.Write a LINQ query to search and display all products with category “FMCG”.
-            var categoryFMCG = products.Where(p => p.ProCategory == "FMCG").ToList();
+            var categoryFMCG =
+                from p in products
+                where p.ProCategory == "FMCG"
+                select p;
 
             Console.WriteLine("FMCG Products:");
 
@@ -54,7 +53,10 @@ namespace LinqPractice
 
 
             //2.Write a LINQ query to search and display all products with category “Grain”.
-            var categoryGrain = products.Where(p => p.ProCategory == "Grain").ToList();
+            var categoryGrain =
+                from p in products
+                where p.ProCategory == "Grain"
+                select p;
 
             Console.WriteLine("\nGrain Products:");
 
@@ -64,9 +66,11 @@ namespace LinqPractice
             }
 
 
-
             //3.Write a LINQ query to sort products in ascending order by product code.
-            var productsAscByProCode = products.OrderBy(p => p.ProCode);
+            var productsAscByProCode =
+                from p in products
+                orderby p.ProCode
+                select p;
 
             Console.WriteLine("\nProducts Sorted By Code:");
 
@@ -76,9 +80,11 @@ namespace LinqPractice
             }
 
 
-
             //4. Write a LINQ query to sort products in ascending order by product Category.
-            var productsAscByProCate = products.OrderBy(p => p.ProCategory);
+            var productsAscByProCate =
+                from p in products
+                orderby p.ProCategory
+                select p;
 
             Console.WriteLine("\nProducts Sorted By Category:");
 
@@ -88,9 +94,11 @@ namespace LinqPractice
             }
 
 
-
             //5. Write a LINQ query to sort products in ascending order by product Mrp.
-            var productsAscByProMrp = products.OrderBy(p => p.ProMrp);
+            var productsAscByProMrp =
+                from p in products
+                orderby p.ProMrp
+                select p;
 
             Console.WriteLine("\nProducts Sorted By MRP (Ascending):");
 
@@ -100,9 +108,11 @@ namespace LinqPractice
             }
 
 
-
             //6.Write a LINQ query to sort products in descending order by product Mrp.
-            var productsDescByProMrp  = products.OrderByDescending(p => p.ProMrp);
+            var productsDescByProMrp =
+                from p in products
+                orderby p.ProMrp descending
+                select p;
 
             Console.WriteLine("\nProducts Sorted By MRP (Descending):");
 
@@ -112,10 +122,10 @@ namespace LinqPractice
             }
 
 
-
-
             //7. Write a LINQ query to display products group by product Category.
-            var dispProByProCate = products.GroupBy(product => product.ProCategory).ToList();
+            var dispProByProCate =
+                from p in products
+                group p by p.ProCategory;
 
             Console.WriteLine("\nProducts Grouped By Category:");
 
@@ -130,10 +140,10 @@ namespace LinqPractice
             }
 
 
-
-
             //8. Write a LINQ query to display products group by product Mrp.
-            var dispProByProMrp = products.GroupBy(product => product.ProMrp).ToList();
+            var dispProByProMrp =
+                from p in products
+                group p by p.ProMrp;
 
             Console.WriteLine("\nProducts Grouped By MRP:");
 
@@ -148,16 +158,15 @@ namespace LinqPractice
             }
 
 
-
             //9. Write a LINQ query to display product detail with highest price in FMCG category.
-            var highestPriceProdFCMGCate = products
-                                .Where(p => p.ProCategory == "FMCG")
-                                .MaxBy(p => p.ProMrp);
+            var highestPriceProdFCMGCate =
+                (from p in products
+                 where p.ProCategory == "FMCG"
+                 orderby p.ProMrp descending
+                 select p).First();
 
             Console.WriteLine($"\nHighest Price FMCG Product:");
             Console.WriteLine($"{highestPriceProdFCMGCate.ProCode}\t{highestPriceProdFCMGCate.ProName}\t{highestPriceProdFCMGCate.ProMrp}");
-
-
 
 
             //10. Write a LINQ query to display count of total products.
@@ -166,12 +175,10 @@ namespace LinqPractice
             Console.WriteLine($"\nTotal Products: {totalProductsCount}");
 
 
-
             //11. Write a LINQ query to display count of total products with category FMCG.
             int totalProductsInFMCG = products.Count(p => p.ProCategory == "FMCG");
 
             Console.WriteLine($"\nTotal FMCG Products: {totalProductsInFMCG}");
-
 
 
             //12.Write a LINQ query to display Max price.
@@ -180,14 +187,10 @@ namespace LinqPractice
             Console.WriteLine($"\nMax Price: {maxPrice}");
 
 
-
-
             //13.Write a LINQ query to display Min price.
             double minPrice = products.Min(p => p.ProMrp);
 
             Console.WriteLine($"\nMin Price: {minPrice}");
-
-
 
 
             //14. Write a LINQ query to display whether all products are below Mrp Rs.30 or not.
@@ -200,8 +203,6 @@ namespace LinqPractice
             bool areAnyProductsBelowMrp30OrNot = products.Any(p => p.ProMrp < 30);
 
             Console.WriteLine($"\nAny product below Rs.30: {areAnyProductsBelowMrp30OrNot}");
-
-
 
             Console.ReadLine();
         }
