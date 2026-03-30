@@ -1,0 +1,42 @@
+﻿@using WebApplication1.Models
+@model List<ContactInfo>
+
+<h1 class="display-5">Contact Controller - ShowContacts</h1>
+
+<a class="btn btn-primary" asp-action="AddContact">Add New Contact</a>
+<hr />
+
+<table border="1" cellpadding="10" cellspacing="0" class="table">
+    <thead>
+        <tr>
+            <th>Contact Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Company Name</th>
+            <th>Email Id</th>
+            <th>Mobile No</th>
+            <th>Designation</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (ContactInfo item in Model)
+        {
+            <tr>
+                <td>@item.ContactId</td>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.CompanyName</td>
+                <td>@item.EmailId</td>
+                <td>@item.MobileNo</td>
+                <td>@item.Designation</td>
+                <td>
+                    <a asp-controller="Contact"
+                       asp-action="GetContactById"
+                       asp-route-id="@item.ContactId">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
