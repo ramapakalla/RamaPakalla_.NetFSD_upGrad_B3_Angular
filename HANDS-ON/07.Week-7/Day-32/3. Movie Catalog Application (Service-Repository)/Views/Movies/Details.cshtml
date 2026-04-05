@@ -1,0 +1,41 @@
+﻿@model Movie
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Movie Details</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Title</th>
+        <td>@Model.Title</td>
+    </tr>
+
+    <tr>
+        <th>Genre</th>
+        <td>@Model.Genre</td>
+    </tr>
+
+    <tr>
+        <th>Release Date</th>
+        <td>@Model.ReleaseDate.ToShortDateString()</td>
+    </tr>
+
+    <tr>
+        <th>Price</th>
+        <td>@Model.Price</td>
+    </tr>
+
+    <tr>
+        <th>Rating</th>
+        <td>@Model.Rating</td>
+    </tr>
+
+</table>
+
+<br />
+
+<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+<a asp-action="Index">Back to List</a>

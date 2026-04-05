@@ -1,0 +1,42 @@
+﻿@model ContactInfo
+
+<h2>Contact Details</h2>
+
+<div style="margin-bottom:8px;">
+    <label>Contact ID:</label>
+    <span>@Model.ContactId</span>
+</div>
+
+<div style="margin-bottom:8px;">
+    <label>First Name:</label>
+    <span>@Model.FirstName</span>
+</div>
+
+<div style="margin-bottom:8px;">
+    <label>Last Name:</label>
+    <span>@Model.LastName</span>
+</div>
+
+<div style="margin-bottom:8px;">
+    <label>Company:</label>
+    <span>@Model.CompanyName</span>
+</div>
+
+<div style="margin-bottom:8px;">
+    <label>Email:</label>
+    <span>@Model.EmailId</span>
+</div>
+
+<div style="margin-bottom:8px;">
+    <label>Mobile:</label>
+    <span>@Model.MobileNo</span>
+</div>
+
+<div style="margin-bottom:8px;">
+    <label>Designation:</label>
+    <span>@Model.Designation</span>
+</div>
+
+<br />
+
+<a asp-action="ShowContacts">Back to List</a>

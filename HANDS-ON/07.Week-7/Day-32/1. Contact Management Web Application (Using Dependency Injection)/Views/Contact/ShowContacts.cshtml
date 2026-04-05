@@ -1,0 +1,33 @@
+﻿@model List<ContactInfo>
+
+<h2>Contact List</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+        <th>Contact ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Company</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Designation</th>
+    </tr>
+
+    @foreach (var contact in Model)
+    {
+        <tr>
+            <td>@contact.ContactId</td>
+            <td>@contact.FirstName</td>
+            <td>@contact.LastName</td>
+            <td>@contact.CompanyName</td>
+            <td>@contact.EmailId</td>
+            <td>@contact.MobileNo</td>
+            <td>@contact.Designation</td>
+        </tr>
+    }
+
+</table>
+
+<br />
+
+<a asp-action="AddContact">Add New Contact</a>
