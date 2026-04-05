@@ -1,0 +1,44 @@
+﻿@model Product
+
+<h2>Create Product</h2>
+
+<form asp-action="Create" method="post">
+
+    <table>
+
+
+        <tr>
+            <td>Product Name</td>
+            <td>
+                <input asp-for="ProductName" />
+                <span asp-validation-for="ProductName"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Price</td>
+            <td>
+                <input asp-for="Price" />
+                <span asp-validation-for="Price"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Category</td>
+            <td>
+                <input asp-for="Category" />
+                <span asp-validation-for="Category"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit">Save</button>
+                <a asp-action="Index">Back</a>
+            </td>
+        </tr>
+
+    </table>
+
+</form>
