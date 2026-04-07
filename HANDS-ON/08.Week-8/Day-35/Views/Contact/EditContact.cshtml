@@ -1,0 +1,72 @@
+﻿@model ContactInfo
+
+<h2>Edit Contact</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="text-danger">
+        @ViewBag.Error
+    </div>
+}
+
+@if (Model != null)
+{
+    <form asp-action="Edit" method="post">
+
+        <input type="hidden" asp-for="ContactId" />
+
+        <div class="form-group">
+            <label>First Name</label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Last Name</label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input asp-for="EmailId" class="form-control" />
+            <span asp-validation-for="EmailId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Mobile</label>
+            <input asp-for="MobileNo" class="form-control" />
+            <span asp-validation-for="MobileNo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Designation</label>
+            <input asp-for="Designation" class="form-control" />
+            <span asp-validation-for="Designation" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Company</label>
+            <select asp-for="CompanyId" asp-items="ViewBag.Companies" class="form-control">
+                <option value="">-- Select Company --</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Department</label>
+            <select asp-for="DepartmentId" asp-items="ViewBag.Departments" class="form-control">
+                <option value="">-- Select Department --</option>
+            </select>
+        </div>
+
+        <br />
+
+        <button type="submit" class="btn btn-success">Update</button>
+        <a asp-action="ShowContacts" class="btn btn-secondary">Cancel</a>
+
+    </form>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
