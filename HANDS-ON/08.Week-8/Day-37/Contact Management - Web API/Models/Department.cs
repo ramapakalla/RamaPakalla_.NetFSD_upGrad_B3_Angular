@@ -1,0 +1,14 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebApplication11.Models
+{
+    public class Department
+    {
+        public int DepartmentId { get; set; }
+
+
+        [Required]
+        [StringLength(100)]
+        public string DepartmentName { get; set; }
+    }
+}
