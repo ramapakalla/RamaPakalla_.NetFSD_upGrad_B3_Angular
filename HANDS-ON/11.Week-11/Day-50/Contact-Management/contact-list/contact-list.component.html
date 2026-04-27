@@ -1,0 +1,33 @@
+<h3>Contact List</h3>
+
+<input type="text" [(ngModel)]="searchText" placeholder="Search by name or email">
+
+<table border="2">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+
+   <tr *ngFor="let contact of (contacts | search: searchText | slice:0:(searchText ? contacts.length : limit))">
+    <td>{{ contact.name | titlecase}}</td>
+    <td>{{ contact.email | lowercase }}</td>
+    <td>{{ contact.phone | phone }}</td>
+    <td>
+      <span [style.color]="contact.status ? 'green' : 'red'">
+        {{ contact.status | status }}
+      </span>
+    </td>
+    <td>
+      <button (click)="toggleStatus(contact)">
+        Toggle Status
+      </button>
+    </td>
+  </tr>
+</table>
+
+<button (click)="toggleLimit()">
+  {{ limit < contacts.length ? 'Show More' : 'Show Less' }}
+</button>
