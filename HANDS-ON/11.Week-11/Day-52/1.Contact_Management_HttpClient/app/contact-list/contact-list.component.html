@@ -1,0 +1,33 @@
+
+<input [(ngModel)]="newContact.name" placeholder="Name">
+<input [(ngModel)]="newContact.email" placeholder="Email" type="email">
+<input [(ngModel)]="newContact.phone" placeholder="Phone">
+
+<hr/>
+
+<button (click)="getContactsClick()">Get Contacts</button>
+<button (click)="addContactClick()">Add Contact</button>
+<button (click)="updateContactClick()">Update Contact</button>
+
+<table border="2" width="500">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone No</th>
+    <th></th>
+  </tr>
+
+    <tr *ngFor="let contact of data">
+      <td>{{contact.id}}</td>
+      <td>{{contact.name}}</td>
+      <td>{{contact.email}}</td>
+      <td>{{contact.phone}}</td>
+      <td>
+          <button (click)="deleteContactClick(contact.id)">Remove</button>
+          <button (click)="editContactClick(contact)">Edit</button>
+      </td>
+      
+    </tr>
+  
+</table>

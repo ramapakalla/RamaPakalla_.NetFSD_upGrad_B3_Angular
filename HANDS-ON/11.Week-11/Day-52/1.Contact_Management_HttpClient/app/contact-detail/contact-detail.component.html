@@ -1,0 +1,13 @@
+@if(!contactObj)
+{
+  <p>Requested Contact details are not available</p>
+}
+@else
+{
+<div style="border:1px solid gray; padding:5px;"> 
+  Id :  {{contactObj.id}} <br/>
+  Name :  {{contactObj.name}} <br/>
+  Email:  {{contactObj.email}} <br/>
+  Phone:  {{contactObj.phone}} <br/>
+</div>
+}
