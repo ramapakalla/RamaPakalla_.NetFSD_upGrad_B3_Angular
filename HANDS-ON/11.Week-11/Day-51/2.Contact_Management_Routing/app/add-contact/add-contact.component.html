@@ -1,0 +1,31 @@
+
+<h1 class="title">Add Contact</h1>
+
+<div class="container">
+
+
+<form #form1="ngForm" (ngSubmit)="addContact()" >
+  <label for="">Name :</label>
+  <input type="text" #t1="ngModel" [(ngModel)]="newContact.name" name="name" placeholder="Enter Name.." required>
+  <br>
+  <span class="c1" *ngIf="t1.invalid && t1.dirty">Name is required</span>
+  <br><br>
+
+  <label for="">Email :</label>
+  <input type="email" #t2="ngModel" [(ngModel)]="newContact.email" name="email" placeholder="Enter Email.." required email>
+  <br>
+  <span class="c1"  *ngIf="t2.invalid && t2.dirty"> Enter valid email address</span>
+  <br><br>
+
+  <label for="">Phone :</label>
+  <input type="text" #t3="ngModel" [(ngModel)]="newContact.phone" name="phone" placeholder="Enter Phone number.." required>
+  <br>
+  <span class="c1"  *ngIf="t3.invalid && t3.dirty">Phone Number is required</span>
+  <br><br>
+
+  <button type="submit" [disabled]="form1.invalid">submit</button>
+
+
+</form>
+
+</div>

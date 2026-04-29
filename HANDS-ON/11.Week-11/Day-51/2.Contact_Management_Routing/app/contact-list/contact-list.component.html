@@ -1,0 +1,19 @@
+<h2>Contact List</h2>
+
+<table border="2">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone No</th>
+  </tr>
+  @for (contact of contactsArray; track contact.id){
+    <tr>
+      <td>{{contact.id}}</td>
+      <td>{{contact.name}}</td>
+      <td>{{contact.email}}</td>
+      <td>{{contact.phone}}</td>
+      <td><a [routerLink]="['/contact', contact.id]">View Details</a></td>
+    </tr>
+  }
+</table>

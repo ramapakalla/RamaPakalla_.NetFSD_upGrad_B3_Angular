@@ -1,0 +1,26 @@
+.container {
+  width: 300px;
+  margin: auto;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.title {
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.c1 {
+  color: red;
+  font-size: 12px;
+}
+
+button {
+  width: 100%;
+  margin-top: 10px;
+}

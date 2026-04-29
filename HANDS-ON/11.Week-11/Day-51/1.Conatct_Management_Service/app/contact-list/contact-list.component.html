@@ -1,0 +1,51 @@
+<h3>Contact List</h3>
+
+<table border="2">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+  </tr>
+
+  <tr *ngFor="let contact of contactsArray">
+    <td>{{ contact.id }}</td>
+    <td>{{ contact.name | titlecase }}</td>
+    <td>{{ contact.email | lowercase }}</td>
+    <td>{{ contact.phone }}</td>
+  </tr>
+</table>
+
+<hr>
+
+<h3>Add Contact</h3>
+
+<form #contactForm="ngForm" (ngSubmit)="addContact()">
+
+  <input 
+    type="text"
+    name="name"
+    [(ngModel)]="newContact.name"
+    placeholder="Name"
+    required
+  />
+
+  <input 
+    type="email"
+    name="email"
+    [(ngModel)]="newContact.email"
+    placeholder="Email"
+    required
+  />
+
+  <input 
+    type="text"
+    name="phone"
+    [(ngModel)]="newContact.phone"
+    placeholder="Phone"
+    required
+  />
+
+  <button type="submit">Add Contact</button>
+
+</form>
